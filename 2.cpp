@@ -60,6 +60,11 @@ int main() {
     cout << "Input how many numbers are going to be in the array: ";
     cin >> n;
 
+    if (cin.fail() || n < 1) {
+        cerr << "Please input a whole number above 0!";
+        return 1;
+    }
+
     int *list = new int[n];// create a new dynamic array
     srand(time(0)); // set a seed for the random numbers
 
