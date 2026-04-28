@@ -31,6 +31,7 @@ int timesAdjacentDiagonals(int list[][3]) {
         i++;
         j--;
     }
+    // go down by each level(i) and go left (j)
 
     return res;
 }

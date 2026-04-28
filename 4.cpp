@@ -3,16 +3,19 @@
 
 using namespace std;
 
+// print the list
 void printList(int** list, int r, int c) {
+    // i feel like \n is more natural than << endl
     cout << "\nlist:\n";
-    for (int i = 0; i < r; i++) {
-        for (int j = 0; j < c ; j++) {
-            cout << list[i][j] << "\t";
+    for (int i = 0; i < r; i++) { // i = rows
+        for (int j = 0; j < c ; j++) { // j = columns
+            cout << list[i][j] << "\t"; // print with a tab space inbetween
         }
-        cout << endl;
+        cout << endl; // okay but is '\n' and endl not the same character count
     }
 }
-void fillList(int** list, int r, int c) {
+// fill the list with random elements
+void fillList(int** list, int r, int c) { 
     for (int i = 0; i < r; i++) {
         for (int j = 0; j < c ; j++) {
             list[i][j] = rand() % 135 - 67; // -67 ... 67
@@ -20,6 +23,7 @@ void fillList(int** list, int r, int c) {
     }
 }
 
+// save the collumn that holds the max value
 void getMaxVal(int** list, int r, int c, int maxColVals[], int maxColPos) {
     for (int i = 0; i<r;i++) {
         for (int j =0; j<c;j++) {
@@ -29,7 +33,7 @@ void getMaxVal(int** list, int r, int c, int maxColVals[], int maxColPos) {
         }
     }
 }
-
+// find which item in the list has the highest value and save it columns
 void findMax(int** list, int r, int c, int& maxColPos) {
     int maxVal = -68; // smaller than the entire array possible values
 
@@ -42,7 +46,7 @@ void findMax(int** list, int r, int c, int& maxColPos) {
         }
     }
 }    
-
+// same as getMaxVal but for minimum value
 void getMinVal(int** list, int r, int c, int minColVals[], int minColPos) {
     for (int i = 0; i<r;i++) {
         for (int j =0; j<c;j++) {
@@ -53,6 +57,7 @@ void getMinVal(int** list, int r, int c, int minColVals[], int minColPos) {
     }
 }
 
+// same as FindMax but min
 void findMin(int** list, int r, int c, int& minColPos) {
     int minVal = 68; // bigger than the entire array possible values
 
@@ -66,14 +71,15 @@ void findMin(int** list, int r, int c, int& minColPos) {
     }
 }
 
-
+// sawp the two columns
 void swapMaxMin(int** list, int r, int c) {
 
-    int maxColPos, minColPos;
+    int maxColPos, minColPos; // the positions are just a single int
 
-    int minColVals[c];
+    int minColVals[c]; // the values of the columns are arrays of just the collumn
     int maxColVals[r];
 
+    // all 4 of the functions
     findMax(list, r, c, maxColPos);
     findMin(list, r, c, minColPos);
     getMinVal(list, r, c, minColVals, minColPos);
@@ -81,7 +87,7 @@ void swapMaxMin(int** list, int r, int c) {
 
 
 
-
+    // swap the positions of the columns by just rewriting the list
     for (int i = 0; i<r;i++) {
         for (int j =0; j<c;j++) {
             if (j == minColPos) {
@@ -120,10 +126,9 @@ int main() {
     }
     fillList(list, row, col);
     printList(list, row, col);
-
     swapMaxMin(list, row, col);
 
-
+    // delete each sub array
     for (int i = 0; i < row; i++) {
         delete[]list[i];
         list[i] = NULL;
