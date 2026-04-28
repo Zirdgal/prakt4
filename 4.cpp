@@ -1,4 +1,3 @@
-// to work on a two dimensional array we shall treat it as one long array
 #include <cstdlib>
 #include <iostream>
 
