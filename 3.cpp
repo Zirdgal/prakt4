@@ -65,23 +65,23 @@ int main() {
     int userInput = 0;
     // get user choices 
     cout << "How do you want to fill the two dimensional static array?" << endl;
-    cout << "Input 0 for user inputted list or input 1 for randomly generated list: ";
+    cout << "Input 1 for user inputted list or input 2 for randomly generated list: ";
     cin >> userInput;
 
     // if user types something that isnt a number
     if (cin.fail()) {
-        cout << "Please type in 1 or 0!";
+        cout << "Please type in 1 or 2!";
         return 1;
     }
 
-    if (userInput == 0) {
+    if (userInput == 1) {
         userFilledList(list);
     }
-    else if (userInput == 1) {
+    else if (userInput == 2) {
         randomlyFilledList(list);
     }
-    else { // if user doesnt type in 1 or 0
-        cout << "Please type in 1 or 0!";
+    else { // if user doesnt type in 1 or 2
+        cout << "Please type in 1 or 2!";
         return 1;
     }
 
