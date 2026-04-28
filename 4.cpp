@@ -112,6 +112,7 @@ int main() {
     // check for errors
     if (cin.fail() || row < 1 || col < 1) {
         cerr << "Please input a whole number that isnt below 1!" << endl;
+        return 1;
     }
     // two dimensional dynamic array
     int **list = new int*[row];
